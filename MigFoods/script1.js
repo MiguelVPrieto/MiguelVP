@@ -5,12 +5,22 @@ let priceMap = new Map([["sushiSalmao", 12.99],
   ["hot", 14.99],
   ["temakiSalmao", 17.99],
   ["sashimiSalmao", 13.99],
-  ["sashimiAtum", 15.99]]);
+  ["sashimiAtum", 15.99],
+  ["bigMac", 14.99],
+  ["mcLanche", 12.99],
+  ["mcNuggets", 8.99],
+  ["mcFritas", 8.99],
+  ["milkshakeOvomaltine", 18.99]]);
 let idMap = new Map([["sushiSalmao", "np1"],
   ["hot", "np2"],
   ["temakiSalmao", "np3"],
   ["sashimiAtum", "np4"],
-  ["sashimiSalmao", "np5"]]);
+  ["sashimiSalmao", "np5"],
+  ["bigMac", "mp1"],
+  ["mcLanche", "mp2"],
+  ["mcNuggets", "mp3"],
+  ["mcFritas", "mp4"],
+  ["milkshakeOvomaltine", "mp5"]]);
 
 function addItemToCart(itemId, itemData) {
   cart.push(itemData);
@@ -95,6 +105,16 @@ function addCartCard() {
       productName = "Sashimi de Atum";
     } else if (itemData === "sashimiSalmao") {
       productName = "Sashimi de Salmão";
+    } else if (itemData === "bigMac") {
+      productName = "Big Mac";
+    } else if (itemData === "mcLanche") {
+      productName = "McLanche Feliz";
+    } else if (itemData === "mcNuggets") {
+      productName = "McNuggets";
+    } else if (itemData === "mcFritas") {
+      productName = "Mc Fritas";
+    } else if (itemData === "milkshakeOvomaltine") {
+      productName = "Milkshake Ovomaltine";
     } else {
       productName = "ERROR: Unknown product"
     }
