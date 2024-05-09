@@ -145,6 +145,16 @@ function addCartCard() {
       productName = "Batata Suprema";
     } else if (itemData === "onionRings") {
       productName = "Onion Rings";
+    } else if (itemData === "insalata") {
+      productName = "Insalata Gabbiano";
+    } else if (itemData === "bruschetta") {
+      productName = "Bruschetta";
+    } else if (itemData === "pizzaBianca") {
+      productName = "Pizza Bianca con Parmigiano";
+    } else if (itemData === "mille") {
+      productName = "Mille Foglie";
+    } else if (itemData === "pici") {
+      productName = "Pici All’Aglione";
     } else {
       productName = "ERROR: Unknown product"
     }
