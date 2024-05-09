@@ -10,7 +10,12 @@ let priceMap = new Map([["sushiSalmao", 12.99],
   ["mcLanche", 12.99],
   ["mcNuggets", 8.99],
   ["mcFritas", 8.99],
-  ["milkshakeOvomaltine", 18.99]]);
+  ["milkshakeOvomaltine", 18.99],
+  ["whopper", 11.99],
+  ["sundaeOvomaltine", 12.99],
+  ["megaStacker", 21.99],
+  ["batataSuprema", 23.99],
+  ["onionRings", 18.99]]);
 let idMap = new Map([["sushiSalmao", "np1"],
   ["hot", "np2"],
   ["temakiSalmao", "np3"],
@@ -20,7 +25,12 @@ let idMap = new Map([["sushiSalmao", "np1"],
   ["mcLanche", "mp2"],
   ["mcNuggets", "mp3"],
   ["mcFritas", "mp4"],
-  ["milkshakeOvomaltine", "mp5"]]);
+  ["milkshakeOvomaltine", "mp5"],
+  ["whopper", "bp1"],
+  ["sundaeOvomaltine", "bp2"],
+  ["megaStacker", "bp3"],
+  ["batataSuprema", "bp4"],
+  ["onionRings", "bp5"]]);
 
 function addItemToCart(itemId, itemData) {
   cart.push(itemData);
