@@ -125,6 +125,16 @@ function addCartCard() {
       productName = "Mc Fritas";
     } else if (itemData === "milkshakeOvomaltine") {
       productName = "Milkshake Ovomaltine";
+    } else if (itemData === "whopper") {
+      productName = "Whopper";
+    } else if (itemData === "sundaeOvomaltine") {
+      productName = "Sundae de Ovomaltine";
+    } else if (itemData === "megaStacker") {
+      productName = "Mega Stacker 2.0";
+    } else if (itemData === "batataSuprema") {
+      productName = "Batata Suprema";
+    } else if (itemData === "onionRings") {
+      productName = "Onion Rings";
     } else {
       productName = "ERROR: Unknown product"
     }
