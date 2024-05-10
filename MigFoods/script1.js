@@ -5,12 +5,42 @@ let priceMap = new Map([["sushiSalmao", 12.99],
   ["hot", 14.99],
   ["temakiSalmao", 17.99],
   ["sashimiSalmao", 13.99],
-  ["sashimiAtum", 15.99]]);
+  ["sashimiAtum", 15.99],
+  ["bigMac", 14.99],
+  ["mcLanche", 12.99],
+  ["mcNuggets", 8.99],
+  ["mcFritas", 8.99],
+  ["milkshakeOvomaltine", 18.99],
+  ["whopper", 11.99],
+  ["sundaeOvomaltine", 12.99],
+  ["megaStacker", 21.99],
+  ["batataSuprema", 23.99],
+  ["onionRings", 18.99],
+  ["insalata", 15.99],
+  ["bruschetta", 17.99],
+  ["pizzaBianca", 9.99],
+  ["mille", 23.99],
+  ["pici", 19.99]]);
 let idMap = new Map([["sushiSalmao", "np1"],
   ["hot", "np2"],
   ["temakiSalmao", "np3"],
   ["sashimiAtum", "np4"],
-  ["sashimiSalmao", "np5"]]);
+  ["sashimiSalmao", "np5"],
+  ["bigMac", "mp1"],
+  ["mcLanche", "mp2"],
+  ["mcNuggets", "mp3"],
+  ["mcFritas", "mp4"],
+  ["milkshakeOvomaltine", "mp5"],
+  ["whopper", "bp1"],
+  ["sundaeOvomaltine", "bp2"],
+  ["megaStacker", "bp3"],
+  ["batataSuprema", "bp4"],
+  ["onionRings", "bp5"],
+  ["insalata", "gp1"],
+  ["bruschetta", "gp2"],
+  ["pizzaBianca", "gp3"],
+  ["mille", "gp4"],
+  ["pici", "gp5"]]);
 
 function addItemToCart(itemId, itemData) {
   cart.push(itemData);
@@ -35,7 +65,6 @@ function blankCart() {
   cart.length = 0;
   localStorage.setItem("cart", JSON.stringify(cart));
   itemCountMap.clear();
-  updateCartDisplay();
   updateTotalPrice();
   addCartCard();
 }
@@ -53,10 +82,6 @@ function updateItemDisplay(itemId, itemData) {
     }
   }
   document.getElementById(itemId).innerHTML = count;
-}
-
-function updateCartDisplay() {
-  document.getElementById("pCart1").textContent = `${cart.length} items`;
 }
 
 function updateTotalPrice() {
@@ -95,6 +120,36 @@ function addCartCard() {
       productName = "Sashimi de Atum";
     } else if (itemData === "sashimiSalmao") {
       productName = "Sashimi de Salmão";
+    } else if (itemData === "bigMac") {
+      productName = "Big Mac";
+    } else if (itemData === "mcLanche") {
+      productName = "McLanche Feliz";
+    } else if (itemData === "mcNuggets") {
+      productName = "McNuggets";
+    } else if (itemData === "mcFritas") {
+      productName = "Mc Fritas";
+    } else if (itemData === "milkshakeOvomaltine") {
+      productName = "Milkshake Ovomaltine";
+    } else if (itemData === "whopper") {
+      productName = "Whopper";
+    } else if (itemData === "sundaeOvomaltine") {
+      productName = "Sundae de Ovomaltine";
+    } else if (itemData === "megaStacker") {
+      productName = "Mega Stacker 2.0";
+    } else if (itemData === "batataSuprema") {
+      productName = "Batata Suprema";
+    } else if (itemData === "onionRings") {
+      productName = "Onion Rings";
+    } else if (itemData === "insalata") {
+      productName = "Insalata Gabbiano";
+    } else if (itemData === "bruschetta") {
+      productName = "Bruschetta";
+    } else if (itemData === "pizzaBianca") {
+      productName = "Pizza Bianca con Parmigiano";
+    } else if (itemData === "mille") {
+      productName = "Mille Foglie";
+    } else if (itemData === "pici") {
+      productName = "Pici All’Aglione";
     } else {
       productName = "ERROR: Unknown product"
     }

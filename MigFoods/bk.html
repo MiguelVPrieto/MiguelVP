@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MigFoods - Burger King</title>
+  <link rel="stylesheet" href="style1.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body onload="updateItemDisplay('bp1', 'whopper'); updateItemDisplay('bp2', 'sundaeOvomaltine'); updateItemDisplay('bp3', 'megaStacker'); updateItemDisplay('bp4', 'batataSuprema'); updateItemDisplay('bp5', 'onionRings')">
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">MigFoods</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <div class="container-fluid">
+          <a class="navbar-brand nav-link" href="main1.html">
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMTYgMTYiPjxwYXRoIGZpbGw9ImN1cnJlbnRDb2xvciIgZD0iTTguNzA3IDEuNWExIDEgMCAwIDAtMS40MTQgMEwuNjQ2IDguMTQ2YS41LjUgMCAwIDAgLjcwOC43MDhMMiA4LjIwN1YxMy41QTEuNSAxLjUgMCAwIDAgMy41IDE1aDlhMS41IDEuNSAwIDAgMCAxLjUtMS41VjguMjA3bC42NDYuNjQ3YS41LjUgMCAwIDAgLjcwOC0uNzA4TDEzIDUuNzkzVjIuNWEuNS41IDAgMCAwLS41LS41aC0xYS41LjUgMCAwIDAtLjUuNXYxLjI5M3pNMTMgNy4yMDdWMTMuNWEuNS41IDAgMCAxLS41LjVoLTlhLjUuNSAwIDAgMS0uNS0uNVY3LjIwN2w1LTV6Ii8+PC9zdmc+">
+          </a>
+        </div>
+        <div class="container-fluid">
+          <a class="navbar-brand nav-link active" href="food.html">
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMTYgMTYiPjxwYXRoIGZpbGw9IiM3NWMzZmYiIGQ9Ik0zLjUgMWEuNS41IDAgMCAxIC41LjV2M2ExLjUgMS41IDAgMCAwIDEgMS40MTVWMS41YS41LjUgMCAwIDEgMSAwdjQuNDE1QTEuNSAxLjUgMCAwIDAgNyA0LjV2LTNhLjUuNSAwIDAgMSAxIDB2M2EyLjUgMi41IDAgMCAxLTIgMi40NXY3LjU1YS41LjUgMCAwIDEtMSAwVjYuOTVBMi41IDIuNSAwIDAgMSAzIDQuNXYtM2EuNS41IDAgMCAxIC41LS41bTYuOTc5IDEuNDc5Yy4xNTktLjE2LjMzOC0uMjgzLjUyMS0uMzY0VjdoLTFWMy41YzAtLjMzNy4xNzQtLjcxNy40NzktMS4wMjFNMTEgOHY2LjVhLjUuNSAwIDAgMCAxIDB2LTEzYS41LjUgMCAwIDAtLjUtLjVjLS42NjMgMC0xLjI4My4zMjYtMS43MjkuNzcxQzkuMzI2IDIuMjE3IDkgMi44MzcgOSAzLjV2NGEuNS41IDAgMCAwIC41LjV6Ii8+PC9zdmc+">
+          </a>
+        </div>
+        <div class="container-fluid">
+          <a class="navbar-brand nav-link" href="contact.html">
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMTYgMTYiPjxwYXRoIGZpbGw9ImN1cnJlbnRDb2xvciIgZD0iTTMuNjU0IDEuMzI4YS42NzguNjc4IDAgMCAwLTEuMDE1LS4wNjNMMS42MDUgMi4zYy0uNDgzLjQ4NC0uNjYxIDEuMTY5LS40NSAxLjc3YTE3LjYgMTcuNiAwIDAgMCA0LjE2OCA2LjYwOGExNy42IDE3LjYgMCAwIDAgNi42MDggNC4xNjhjLjYwMS4yMTEgMS4yODYuMDMzIDEuNzctLjQ1bDEuMDM0LTEuMDM0YS42NzguNjc4IDAgMCAwLS4wNjMtMS4wMTVsLTIuMzA3LTEuNzk0YS42OC42OCAwIDAgMC0uNTgtLjEyMmwtMi4xOS41NDdhMS43NSAxLjc1IDAgMCAxLTEuNjU3LS40NTlMNS40ODIgOC4wNjJhMS43NSAxLjc1IDAgMCAxLS40Ni0xLjY1N2wuNTQ4LTIuMTlhLjY4LjY4IDAgMCAwLS4xMjItLjU4ek0xLjg4NC41MTFhMS43NDUgMS43NDUgMCAwIDEgMi42MTIuMTYzTDYuMjkgMi45OGMuMzI5LjQyMy40NDUuOTc0LjMxNSAxLjQ5NGwtLjU0NyAyLjE5YS42OC42OCAwIDAgMCAuMTc4LjY0M2wyLjQ1NyAyLjQ1N2EuNjguNjggMCAwIDAgLjY0NC4xNzhsMi4xODktLjU0N2ExLjc1IDEuNzUgMCAwIDEgMS40OTQuMzE1bDIuMzA2IDEuNzk0Yy44MjkuNjQ1LjkwNSAxLjg3LjE2MyAyLjYxMWwtMS4wMzQgMS4wMzRjLS43NC43NC0xLjg0NiAxLjA2NS0yLjg3Ny43MDJhMTguNiAxOC42IDAgMCAxLTcuMDEtNC40MmExOC42IDE4LjYgMCAwIDEtNC40Mi03LjAwOWMtLjM2Mi0xLjAzLS4wMzctMi4xMzcuNzAzLTIuODc3eiIvPjwvc3ZnPg==">
+          </a>
+        </div>
+        <div class="container-fluid">
+          <a class="navbar-brand nav-link" href="cart.html">
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMTYgMTYiPjxwYXRoIGZpbGw9ImN1cnJlbnRDb2xvciIgZD0iTTAgMS41QS41LjUgMCAwIDEgLjUgMUgyYS41LjUgMCAwIDEgLjQ4NS4zNzlMMi44OSAzSDE0LjVhLjUuNSAwIDAgMSAuNDkxLjU5MmwtMS41IDhBLjUuNSAwIDAgMSAxMyAxMkg0YS41LjUgMCAwIDEtLjQ5MS0uNDA4TDIuMDEgMy42MDdMMS42MSAySC41YS41LjUgMCAwIDEtLjUtLjVNMy4xMDIgNGwxLjMxMyA3aDguMTdsMS4zMTMtN3pNNSAxMmEyIDIgMCAxIDAgMCA0YTIgMiAwIDAgMCAwLTRtNyAwYTIgMiAwIDEgMCAwIDRhMiAyIDAgMCAwIDAtNG0tNyAxYTEgMSAwIDEgMSAwIDJhMSAxIDAgMCAxIDAtMm03IDBhMSAxIDAgMSAxIDAgMmExIDEgMCAwIDEgMC0yIi8+PC9zdmc+">
+          </a>
+        </div>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="div1">
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="card" style="width: 18rem; margin: 20px;">
+      <img src="..." class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Whopper</h5>
+        <p class="card-text">2 unidades de sushi de salmão.<br><b>R$ 11.99</b></p>
+        <br>
+        <br>
+        <p style="text-align: center;" class="card-text" id="bp1">0</p>
+        <button onclick="removeItemFromCart('bp1', 'whopper')" style="margin-left: 60px;" type="button" class="btn btn-outline-light"><img class="but1" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMTYgMTYiPjxnIGZpbGw9ImN1cnJlbnRDb2xvciI+PHBhdGggZD0iTTYuNSA3YS41LjUgMCAwIDAgMCAxaDRhLjUuNSAwIDAgMCAwLTF6Ii8+PHBhdGggZD0iTS41IDFhLjUuNSAwIDAgMCAwIDFoMS4xMWwuNDAxIDEuNjA3bDEuNDk4IDcuOTg1QS41LjUgMCAwIDAgNCAxMmgxYTIgMiAwIDEgMCAwIDRhMiAyIDAgMCAwIDAtNGg3YTIgMiAwIDEgMCAwIDRhMiAyIDAgMCAwIDAtNGgxYS41LjUgMCAwIDAgLjQ5MS0uNDA4bDEuNS04QS41LjUgMCAwIDAgMTQuNSAzSDIuODlsLS40MDUtMS42MjFBLjUuNSAwIDAgMCAyIDF6bTMuOTE1IDEwTDMuMTAyIDRoMTAuNzk2bC0xLjMxMyA3ek02IDE0YTEgMSAwIDEgMS0yIDBhMSAxIDAgMCAxIDIgMG03IDBhMSAxIDAgMSAxLTIgMGExIDEgMCAwIDEgMiAwIi8+PC9nPjwvc3ZnPg=="></button>
+        <button onclick="addItemToCart('bp1', 'whopper')" type="button" class="btn btn-outline-light"><img class="but1" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMTYgMTYiPjxnIGZpbGw9ImN1cnJlbnRDb2xvciI+PHBhdGggZD0iTTkgNS41YS41LjUgMCAwIDAtMSAwVjdINi41YS41LjUgMCAwIDAgMCAxSDh2MS41YS41LjUgMCAwIDAgMSAwVjhoMS41YS41LjUgMCAwIDAgMC0xSDl6Ii8+PHBhdGggZD0iTS41IDFhLjUuNSAwIDAgMCAwIDFoMS4xMWwuNDAxIDEuNjA3bDEuNDk4IDcuOTg1QS41LjUgMCAwIDAgNCAxMmgxYTIgMiAwIDEgMCAwIDRhMiAyIDAgMCAwIDAtNGg3YTIgMiAwIDEgMCAwIDRhMiAyIDAgMCAwIDAtNGgxYS41LjUgMCAwIDAgLjQ5MS0uNDA4bDEuNS04QS41LjUgMCAwIDAgMTQuNSAzSDIuODlsLS40MDUtMS42MjFBLjUuNSAwIDAgMCAyIDF6bTMuOTE1IDEwTDMuMTAyIDRoMTAuNzk2bC0xLjMxMyA3ek02IDE0YTEgMSAwIDEgMS0yIDBhMSAxIDAgMCAxIDIgMG03IDBhMSAxIDAgMSAxLTIgMGExIDEgMCAwIDEgMiAwIi8+PC9nPjwvc3ZnPg=="></button>
+      </div>
+    </div>
+    <div class="card" style="width: 18rem; margin: 20px;">
+      <img src="..." class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Sundae de Ovomaltine</h5>
+        <p class="card-text">6 unidades. Salmão grelhado com cream cheese enrolado em nori, empanado e frito.<br><b>R$ 12.99</b></p>
+        <p style="text-align: center;" class="card-text" id="bp2">0</p>
+        <button onclick="removeItemFromCart('bp2', 'sundaeOvomaltine')" style="margin-left: 60px;" type="button" class="btn btn-outline-light"><img class="but1" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMTYgMTYiPjxnIGZpbGw9ImN1cnJlbnRDb2xvciI+PHBhdGggZD0iTTYuNSA3YS41LjUgMCAwIDAgMCAxaDRhLjUuNSAwIDAgMCAwLTF6Ii8+PHBhdGggZD0iTS41IDFhLjUuNSAwIDAgMCAwIDFoMS4xMWwuNDAxIDEuNjA3bDEuNDk4IDcuOTg1QS41LjUgMCAwIDAgNCAxMmgxYTIgMiAwIDEgMCAwIDRhMiAyIDAgMCAwIDAtNGg3YTIgMiAwIDEgMCAwIDRhMiAyIDAgMCAwIDAtNGgxYS41LjUgMCAwIDAgLjQ5MS0uNDA4bDEuNS04QS41LjUgMCAwIDAgMTQuNSAzSDIuODlsLS40MDUtMS42MjFBLjUuNSAwIDAgMCAyIDF6bTMuOTE1IDEwTDMuMTAyIDRoMTAuNzk2bC0xLjMxMyA3ek02IDE0YTEgMSAwIDEgMS0yIDBhMSAxIDAgMCAxIDIgMG03IDBhMSAxIDAgMSAxLTIgMGExIDEgMCAwIDEgMiAwIi8+PC9nPjwvc3ZnPg=="></button>
+        <button onclick="addItemToCart('bp2', 'sundaeOvomaltine')" type="button" class="btn btn-outline-light"><img class="but1" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMTYgMTYiPjxnIGZpbGw9ImN1cnJlbnRDb2xvciI+PHBhdGggZD0iTTkgNS41YS41LjUgMCAwIDAtMSAwVjdINi41YS41LjUgMCAwIDAgMCAxSDh2MS41YS41LjUgMCAwIDAgMSAwVjhoMS41YS41LjUgMCAwIDAgMC0xSDl6Ii8+PHBhdGggZD0iTS41IDFhLjUuNSAwIDAgMCAwIDFoMS4xMWwuNDAxIDEuNjA3bDEuNDk4IDcuOTg1QS41LjUgMCAwIDAgNCAxMmgxYTIgMiAwIDEgMCAwIDRhMiAyIDAgMCAwIDAtNGg3YTIgMiAwIDEgMCAwIDRhMiAyIDAgMCAwIDAtNGgxYS41LjUgMCAwIDAgLjQ5MS0uNDA4bDEuNS04QS41LjUgMCAwIDAgMTQuNSAzSDIuODlsLS40MDUtMS42MjFBLjUuNSAwIDAgMCAyIDF6bTMuOTE1IDEwTDMuMTAyIDRoMTAuNzk2bC0xLjMxMyA3ek02IDE0YTEgMSAwIDEgMS0yIDBhMSAxIDAgMCAxIDIgMG03IDBhMSAxIDAgMSAxLTIgMGExIDEgMCAwIDEgMiAwIi8+PC9nPjwvc3ZnPg=="></button>
+      </div>
+    </div>
+    <div class="card" style="width: 18rem; margin: 20px;">
+      <img src="..." class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Mega Stacker 2.0</h5>
+        <p class="card-text">Cone de alga desidratada: Nori com arroz japonês e recheio de salmão.<br><b>R$ 21.99</b></p>
+        <p style="text-align: center;" class="card-text" id="bp3">0</p>
+        <button onclick="removeItemFromCart('bp3', 'megaStacker')" style="margin-left: 60px;" type="button" class="btn btn-outline-light"><img class="but1" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMTYgMTYiPjxnIGZpbGw9ImN1cnJlbnRDb2xvciI+PHBhdGggZD0iTTYuNSA3YS41LjUgMCAwIDAgMCAxaDRhLjUuNSAwIDAgMCAwLTF6Ii8+PHBhdGggZD0iTS41IDFhLjUuNSAwIDAgMCAwIDFoMS4xMWwuNDAxIDEuNjA3bDEuNDk4IDcuOTg1QS41LjUgMCAwIDAgNCAxMmgxYTIgMiAwIDEgMCAwIDRhMiAyIDAgMCAwIDAtNGg3YTIgMiAwIDEgMCAwIDRhMiAyIDAgMCAwIDAtNGgxYS41LjUgMCAwIDAgLjQ5MS0uNDA4bDEuNS04QS41LjUgMCAwIDAgMTQuNSAzSDIuODlsLS40MDUtMS42MjFBLjUuNSAwIDAgMCAyIDF6bTMuOTE1IDEwTDMuMTAyIDRoMTAuNzk2bC0xLjMxMyA3ek02IDE0YTEgMSAwIDEgMS0yIDBhMSAxIDAgMCAxIDIgMG03IDBhMSAxIDAgMSAxLTIgMGExIDEgMCAwIDEgMiAwIi8+PC9nPjwvc3ZnPg=="></button>
+        <button onclick="addItemToCart('bp3', 'megaStacker')" type="button" class="btn btn-outline-light"><img class="but1" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMTYgMTYiPjxnIGZpbGw9ImN1cnJlbnRDb2xvciI+PHBhdGggZD0iTTkgNS41YS41LjUgMCAwIDAtMSAwVjdINi41YS41LjUgMCAwIDAgMCAxSDh2MS41YS41LjUgMCAwIDAgMSAwVjhoMS41YS41LjUgMCAwIDAgMC0xSDl6Ii8+PHBhdGggZD0iTS41IDFhLjUuNSAwIDAgMCAwIDFoMS4xMWwuNDAxIDEuNjA3bDEuNDk4IDcuOTg1QS41LjUgMCAwIDAgNCAxMmgxYTIgMiAwIDEgMCAwIDRhMiAyIDAgMCAwIDAtNGg3YTIgMiAwIDEgMCAwIDRhMiAyIDAgMCAwIDAtNGgxYS41LjUgMCAwIDAgLjQ5MS0uNDA4bDEuNS04QS41LjUgMCAwIDAgMTQuNSAzSDIuODlsLS40MDUtMS42MjFBLjUuNSAwIDAgMCAyIDF6bTMuOTE1IDEwTDMuMTAyIDRoMTAuNzk2bC0xLjMxMyA3ek02IDE0YTEgMSAwIDEgMS0yIDBhMSAxIDAgMCAxIDIgMG03IDBhMSAxIDAgMSAxLTIgMGExIDEgMCAwIDEgMiAwIi8+PC9nPjwvc3ZnPg=="></button>
+      </div>
+    </div>
+    <div class="card" style="width: 18rem; margin: 20px;">
+      <img src="..." class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Batata Suprema</h5>
+        <p class="card-text">3 fatias de sashimi de atum.<br><b>R$ 23.99</b></p>
+        <br>
+        <br>
+        <p style="text-align: center;" class="card-text" id="bp4">0</p>
+        <button onclick="removeItemFromCart('bp4', 'batataSuprema')" style="margin-left: 60px;" type="button" class="btn btn-outline-light"><img class="but1" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMTYgMTYiPjxnIGZpbGw9ImN1cnJlbnRDb2xvciI+PHBhdGggZD0iTTYuNSA3YS41LjUgMCAwIDAgMCAxaDRhLjUuNSAwIDAgMCAwLTF6Ii8+PHBhdGggZD0iTS41IDFhLjUuNSAwIDAgMCAwIDFoMS4xMWwuNDAxIDEuNjA3bDEuNDk4IDcuOTg1QS41LjUgMCAwIDAgNCAxMmgxYTIgMiAwIDEgMCAwIDRhMiAyIDAgMCAwIDAtNGg3YTIgMiAwIDEgMCAwIDRhMiAyIDAgMCAwIDAtNGgxYS41LjUgMCAwIDAgLjQ5MS0uNDA4bDEuNS04QS41LjUgMCAwIDAgMTQuNSAzSDIuODlsLS40MDUtMS42MjFBLjUuNSAwIDAgMCAyIDF6bTMuOTE1IDEwTDMuMTAyIDRoMTAuNzk2bC0xLjMxMyA3ek02IDE0YTEgMSAwIDEgMS0yIDBhMSAxIDAgMCAxIDIgMG03IDBhMSAxIDAgMSAxLTIgMGExIDEgMCAwIDEgMiAwIi8+PC9nPjwvc3ZnPg=="></button>
+        <button onclick="addItemToCart('bp4', 'batataSuprema')" type="button" class="btn btn-outline-light"><img class="but1" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMTYgMTYiPjxnIGZpbGw9ImN1cnJlbnRDb2xvciI+PHBhdGggZD0iTTkgNS41YS41LjUgMCAwIDAtMSAwVjdINi41YS41LjUgMCAwIDAgMCAxSDh2MS41YS41LjUgMCAwIDAgMSAwVjhoMS41YS41LjUgMCAwIDAgMC0xSDl6Ii8+PHBhdGggZD0iTS41IDFhLjUuNSAwIDAgMCAwIDFoMS4xMWwuNDAxIDEuNjA3bDEuNDk4IDcuOTg1QS41LjUgMCAwIDAgNCAxMmgxYTIgMiAwIDEgMCAwIDRhMiAyIDAgMCAwIDAtNGg3YTIgMiAwIDEgMCAwIDRhMiAyIDAgMCAwIDAtNGgxYS41LjUgMCAwIDAgLjQ5MS0uNDA4bDEuNS04QS41LjUgMCAwIDAgMTQuNSAzSDIuODlsLS40MDUtMS42MjFBLjUuNSAwIDAgMCAyIDF6bTMuOTE1IDEwTDMuMTAyIDRoMTAuNzk2bC0xLjMxMyA3ek02IDE0YTEgMSAwIDEgMS0yIDBhMSAxIDAgMCAxIDIgMG03IDBhMSAxIDAgMSAxLTIgMGExIDEgMCAwIDEgMiAwIi8+PC9nPjwvc3ZnPg=="></button>
+      </div>
+    </div>
+    <div class="card" style="width: 18rem; margin-left: 20px; margin-bottom: 20px;">
+      <img src="..." class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Onion Rings</h5>
+        <p class="card-text">3 fatias de sashimi de salmão.<br><b>R$ 18.99</b></p>
+        <br>
+        <br>
+        <p style="text-align: center;" class="card-text" id="bp5">0</p>
+        <button onclick="removeItemFromCart('bp5', 'onionRings')" style="margin-left: 60px;" type="button" class="btn btn-outline-light"><img class="but1" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMTYgMTYiPjxnIGZpbGw9ImN1cnJlbnRDb2xvciI+PHBhdGggZD0iTTYuNSA3YS41LjUgMCAwIDAgMCAxaDRhLjUuNSAwIDAgMCAwLTF6Ii8+PHBhdGggZD0iTS41IDFhLjUuNSAwIDAgMCAwIDFoMS4xMWwuNDAxIDEuNjA3bDEuNDk4IDcuOTg1QS41LjUgMCAwIDAgNCAxMmgxYTIgMiAwIDEgMCAwIDRhMiAyIDAgMCAwIDAtNGg3YTIgMiAwIDEgMCAwIDRhMiAyIDAgMCAwIDAtNGgxYS41LjUgMCAwIDAgLjQ5MS0uNDA4bDEuNS04QS41LjUgMCAwIDAgMTQuNSAzSDIuODlsLS40MDUtMS42MjFBLjUuNSAwIDAgMCAyIDF6bTMuOTE1IDEwTDMuMTAyIDRoMTAuNzk2bC0xLjMxMyA3ek02IDE0YTEgMSAwIDEgMS0yIDBhMSAxIDAgMCAxIDIgMG03IDBhMSAxIDAgMSAxLTIgMGExIDEgMCAwIDEgMiAwIi8+PC9nPjwvc3ZnPg=="></button>
+        <button onclick="addItemToCart('bp5', 'onionRings')" type="button" class="btn btn-outline-light"><img class="but1" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMTYgMTYiPjxnIGZpbGw9ImN1cnJlbnRDb2xvciI+PHBhdGggZD0iTTkgNS41YS41LjUgMCAwIDAtMSAwVjdINi41YS41LjUgMCAwIDAgMCAxSDh2MS41YS41LjUgMCAwIDAgMSAwVjhoMS41YS41LjUgMCAwIDAgMC0xSDl6Ii8+PHBhdGggZD0iTS41IDFhLjUuNSAwIDAgMCAwIDFoMS4xMWwuNDAxIDEuNjA3bDEuNDk4IDcuOTg1QS41LjUgMCAwIDAgNCAxMmgxYTIgMiAwIDEgMCAwIDRhMiAyIDAgMCAwIDAtNGg3YTIgMiAwIDEgMCAwIDRhMiAyIDAgMCAwIDAtNGgxYS41LjUgMCAwIDAgLjQ5MS0uNDA4bDEuNS04QS41LjUgMCAwIDAgMTQuNSAzSDIuODlsLS40MDUtMS42MjFBLjUuNSAwIDAgMCAyIDF6bTMuOTE1IDEwTDMuMTAyIDRoMTAuNzk2bC0xLjMxMyA3ek02IDE0YTEgMSAwIDEgMS0yIDBhMSAxIDAgMCAxIDIgMG03IDBhMSAxIDAgMSAxLTIgMGExIDEgMCAwIDEgMiAwIi8+PC9nPjwvc3ZnPg=="></button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="script1.js"></script>
+</body>
+</html>

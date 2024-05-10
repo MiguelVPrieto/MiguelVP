@@ -4,9 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>MigFoods</title>
+  <link rel="stylesheet" href="style1.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
-<body onload="updateTotalPrice(); addCartCard()">
+<body>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">MigFoods</a>
@@ -40,12 +41,12 @@
   </div>
 </nav>
 <br>
-<div class="div2" id="baseDIV"></div>
-<div>
-    <button style="display: inline-block; margin-left: 760px; margin-right: 50px;" onclick="blankCart()" type="button" class="btn btn-light"><img style="width: 25px; height: 25px;" class="but2" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMTYgMTYiPjxnIGZpbGw9ImN1cnJlbnRDb2xvciI+PHBhdGggZD0iTTcuMzU0IDUuNjQ2YS41LjUgMCAxIDAtLjcwOC43MDhMNy43OTMgNy41TDYuNjQ2IDguNjQ2YS41LjUgMCAxIDAgLjcwOC43MDhMOC41IDguMjA3bDEuMTQ2IDEuMTQ3YS41LjUgMCAwIDAgLjcwOC0uNzA4TDkuMjA3IDcuNWwxLjE0Ny0xLjE0NmEuNS41IDAgMCAwLS43MDgtLjcwOEw4LjUgNi43OTN6Ii8+PHBhdGggZD0iTS41IDFhLjUuNSAwIDAgMCAwIDFoMS4xMWwuNDAxIDEuNjA3bDEuNDk4IDcuOTg1QS41LjUgMCAwIDAgNCAxMmgxYTIgMiAwIDEgMCAwIDRhMiAyIDAgMCAwIDAtNGg3YTIgMiAwIDEgMCAwIDRhMiAyIDAgMCAwIDAtNGgxYS41LjUgMCAwIDAgLjQ5MS0uNDA4bDEuNS04QS41LjUgMCAwIDAgMTQuNSAzSDIuODlsLS40MDUtMS42MjFBLjUuNSAwIDAgMCAyIDF6bTMuOTE1IDEwTDMuMTAyIDRoMTAuNzk2bC0xLjMxMyA3ek02IDE0YTEgMSAwIDEgMS0yIDBhMSAxIDAgMCAxIDIgMG03IDBhMSAxIDAgMSAxLTIgMGExIDEgMCAwIDEgMiAwIi8+PC9nPjwvc3ZnPg=="></button>
-    <div style="display: inline-block; margin-right: 50px;"><p style="font-size: 30px;"><b id="pCart2">R$ 0.00</b></p></div>
-    <button style="display: inline-block;" type="button" class="btn btn-light"><a style="text-decoration: none; color: #000;" href="pagar.html">Pagar</a></button>
-</div>
+<p style="text-align: center">Como você vai pagar?</p>
+<br>
+<br>
+<button style="margin-left: 680px;" onclick="" type="button" class="btn btn-outline-light"><a href="card.html"><img class="but1" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMTYgMTYiPjxnIGZpbGw9ImN1cnJlbnRDb2xvciI+PHBhdGggZD0iTTExIDUuNWEuNS41IDAgMCAxIC41LS41aDJhLjUuNSAwIDAgMSAuNS41djFhLjUuNSAwIDAgMS0uNS41aC0yYS41LjUgMCAwIDEtLjUtLjV6Ii8+PHBhdGggZD0iTTIgMmEyIDIgMCAwIDAtMiAydjhhMiAyIDAgMCAwIDIgMmgxMmEyIDIgMCAwIDAgMi0yVjRhMiAyIDAgMCAwLTItMnptMTMgMnY1SDFWNGExIDEgMCAwIDEgMS0xaDEyYTEgMSAwIDAgMSAxIDFtLTEgOUgyYTEgMSAwIDAgMS0xLTF2LTFoMTR2MWExIDEgMCAwIDEtMSAxIi8+PC9nPjwvc3ZnPg=="></a></button>
+<button onclick="" type="button" class="btn btn-outline-light"><a href="paypal.html"><img class="but1" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMTYgMTYiPjxwYXRoIGZpbGw9ImN1cnJlbnRDb2xvciIgZD0iTTE0LjA2IDMuNzEzYy4xMi0xLjA3MS0uMDkzLTEuODMyLS43MDItMi41MjZDMTIuNjI4LjM1NiAxMS4zMTIgMCA5LjYyNiAwSDQuNzM0YS43LjcgMCAwIDAtLjY5MS41OUwyLjAwNSAxMy41MDlhLjQyLjQyIDAgMCAwIC40MTUuNDg2aDIuNzU2bC0uMjAyIDEuMjhhLjYyOC42MjggMCAwIDAgLjYyLjcyNkg4LjE0Yy40MjkgMCAuNzkzLS4zMS44NjItLjczMWwuMDI1LS4xM2wuNDgtMy4wNDNsLjAzLS4xNjRsLjAwMS0uMDA3YS4zNS4zNSAwIDAgMSAuMzQ4LS4yOTdoLjM4YzEuMjY2IDAgMi40MjUtLjI1NiAzLjM0NS0uOTFxLjU3LS40MDMuOTkzLTEuMDA1YTQuOTQgNC45NCAwIDAgMCAuODgtMi4xOTVjLjI0Mi0xLjI0Ni4xMy0yLjM1Ni0uNTctMy4xNTRhMi43IDIuNyAwIDAgMC0uNzYtLjU5bC0uMDk0LS4wNjFaTTYuNTQzIDguODJhLjcuNyAwIDAgMSAuMzIxLS4wNzlIOC4zYzIuODIgMCA1LjAyNy0xLjE0NCA1LjY3Mi00LjQ1NmwuMDAzLS4wMTZxLjMyNi4xODYuNTQ4LjQzOGMuNTQ2LjYyMy42NzkgMS41MzUuNDUgMi43MWMtLjI3MiAxLjM5Ny0uODY2IDIuMzA3LTEuNjYzIDIuODc0Yy0uODAyLjU3LTEuODQyLjgxNS0zLjA0My44MTVoLS4zOGEuODcuODcgMCAwIDAtLjg2My43MzRsLS4wMy4xNjRsLS40OCAzLjA0M2wtLjAyNC4xM2wtLjAwMS4wMDRhLjM1LjM1IDAgMCAxLS4zNDguMjk2SDUuNTk1YS4xMDYuMTA2IDAgMCAxLS4xMDUtLjEyM2wuMjA4LTEuMzJ6Ii8+PC9zdmc+"></a></button>
+<button onclick="" type="button" class="btn btn-outline-light"><a href="cash.html"><img class="but1" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMTYgMTYiPjxnIGZpbGw9ImN1cnJlbnRDb2xvciI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBkPSJNMTEgMTVhNCA0IDAgMSAwIDAtOGE0IDQgMCAwIDAgMCA4bTUtNGE1IDUgMCAxIDEtMTAgMGE1IDUgMCAwIDEgMTAgMCIvPjxwYXRoIGQ9Ik05LjQzOCAxMS45NDRjLjA0Ny41OTYuNTE4IDEuMDYgMS4zNjMgMS4xMTZ2LjQ0aC4zNzV2LS40NDNjLjg3NS0uMDYxIDEuMzg2LS41MjkgMS4zODYtMS4yMDdjMC0uNjE4LS4zOS0uOTM2LTEuMDktMS4xbC0uMjk2LS4wN3YtMS4yYy4zNzYuMDQzLjYxNC4yNDguNjcxLjUzMmguNjU4Yy0uMDQ3LS41NzUtLjU0LTEuMDI0LTEuMzI5LTEuMDczVjguNWgtLjM3NXYuNDVjLS43NDcuMDczLTEuMjU1LjUyMi0xLjI1NSAxLjE1OGMwIC41NjIuMzc4LjkyIDEuMDA3IDEuMDY2bC4yNDguMDYxdjEuMjcyYy0uMzg0LS4wNTgtLjYzOS0uMjctLjY5Ni0uNTYzaC0uNjY4em0xLjM2LTEuMzU0Yy0uMzY5LS4wODUtLjU2OS0uMjYtLjU2OS0uNTIyYzAtLjI5NC4yMTYtLjUxNC41NzItLjU3OHYxLjF6bS40MzIuNzQ2Yy40NDkuMTA0LjY1NS4yNzIuNjU1LjU2OWMwIC4zMzktLjI1Ny41NzEtLjcwOS42MTR2LTEuMTk1eiIvPjxwYXRoIGQ9Ik0xIDBhMSAxIDAgMCAwLTEgMXY4YTEgMSAwIDAgMCAxIDFoNC4wODNxLjA4OC0uNTE3LjI1OC0xSDNhMiAyIDAgMCAwLTItMlYzYTIgMiAwIDAgMCAyLTJoMTBhMiAyIDAgMCAwIDIgMnYzLjUyOGMuMzguMzQuNzE3LjcyOCAxIDEuMTU0VjFhMSAxIDAgMCAwLTEtMXoiLz48cGF0aCBkPSJNOS45OTggNS4wODNMMTAgNWEyIDIgMCAxIDAtMy4xMzIgMS42NWE2IDYgMCAwIDEgMy4xMy0xLjU2NyIvPjwvZz48L3N2Zz4="></a></button>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <script src="script1.js"></script>
 </body>
