@@ -85,9 +85,10 @@ function updateItemDisplay(itemId, itemData) {
   document.getElementById(itemId).innerHTML = count;
 }
 
+/*
 function updateCartDisplay() {
   document.getElementById("pCart1").textContent = `${cart.length} items`;
-}
+}*/
 
 function updateTotalPrice() {
   totalPrice = 0.00;
