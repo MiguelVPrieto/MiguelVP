@@ -52,23 +52,26 @@
 <br>
 <br>
 <br>
-<div class="input-container">
-  <input type="text" id="request" required="">
-  <label for="request" class="label">Enter Request</label>
-  <div class="underline"></div>
-</div>
-<div class="input-container">
-  <input type="text" id="name" required="">
-  <label for="name" class="label">Enter Name</label>
-  <div class="underline"></div>
-</div>
-<div class="input-container">
-  <input type="text" id="email" required="">
-  <label for="email" class="label">Enter Email</label>
-  <div class="underline"></div>
+<form action="save_request.php" method="POST">
+  <div class="input-container">
+    <input type="text" id="request" required="">
+    <label for="request" class="label">Enter Request</label>
+    <div class="underline"></div>
+  </div>
+  <div class="input-container">
+    <input type="text" id="name" required="">
+    <label for="name" class="label">Enter Name</label>
+    <div class="underline"></div>
+  </div>
+  <div style="margin-bottom: 15px;" class="input-container">
+    <input type="text" id="email" required="">
+    <label for="email" class="label">Enter Email</label>
+    <div class="underline"></div>
+  </div>
   <label class="label1">I'm going to use this email to contact you.</label>
-</div>
+</form>
 <button style="margin-left: 890px" class="cssbuttons-io-button">
+  <input type="submit"/>
   Submit
   <div class="icon">
     <svg
