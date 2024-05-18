@@ -89,10 +89,16 @@
   </button>
 </form>
 <script>
-  document.getElementById('sendEmailButton').addEventListener('click', function() {
+  document.getElementById('sendEmailButton').addEventListener('click', function(event) {
+    event.preventDefault();
+    const formData = new FormData(document.getElementById('form'));
+    const data = {};
+    for (const [key, value] of formData.entries()) {
+      data[key] = value;
+    }
     fetch('/.netlify/functions/send-email', {
       method: 'POST',
-      body: JSON.stringify({ message: 'Button was clicked!' }),
+      body: JSON.stringify(data),
       headers: {
         'Content-Type': 'application/json'
       }
