@@ -8,7 +8,11 @@ function sendEmail() {
     request : document.getElementById("request").value,
     email : document.getElementById("email").value
   }
-  emailjs.send("service_5mcxryi", "template_3wsttqj", params).then(function (res) {
-    alert("Success!" + res.status);
-  })
+  if(name !== "" && request !== "" && email !== "") {
+    emailjs.send("service_5mcxryi", "template_3wsttqj", params).then(function (res) {
+      alert("Success!" + res.status);
+    })
+  } else {
+    alert("Fail!" + res.status);
+  }
 }
