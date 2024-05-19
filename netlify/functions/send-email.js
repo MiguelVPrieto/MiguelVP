@@ -8,7 +8,7 @@ function sendEmail() {
     request : document.getElementById("request").value,
     email : document.getElementById("email").value
   }
-  if(params.name !== " " && params.request !== " " && params.email !== " ") {
+  if(params.name !== null && params.request !== null && params.email !== null) {
     emailjs.send("service_5mcxryi", "template_3wsttqj", params).then(function (res) {
       alert("Success!" + res.status);
     })
