@@ -8,11 +8,12 @@ function sendEmail() {
     request : document.getElementById("request").value,
     email : document.getElementById("email").value
   }
-  if(params.name !== null && params.request !== null && params.email !== null) {
-    emailjs.send("service_5mcxryi", "template_3wsttqj", params).then(function (res) {
-      alert("Success!" + res.status);
-    })
-  } else {
-    alert("Fail!" + res.status);
-  }
+  //if(params.name !== null && params.request !== null && params.email !== null) {
+    //emailjs.send("service_5mcxryi", "template_3wsttqj", params).then(function (res) {
+      //alert("Success!" + res.status);
+   // })
+  //} else {
+    //alert("Fail!" + res.status);
+  //}
+  alert("First: " + params.name + " Second: " + params.request + " Third: " + params.email + " ")
 }
