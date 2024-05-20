@@ -20,7 +20,12 @@ let priceMap = new Map([["sushiSalmao", 12.99],
   ["bruschetta", 17.99],
   ["pizzaBianca", 9.99],
   ["mille", 23.99],
-  ["pici", 19.99]]);
+  ["pici", 19.99],
+  ["portu", 19.99],
+  ["frango", 23.99],
+  ["marge", 18.99],
+  ["mozza", 18.99],
+  ["pepe", 17.99]]);
 let idMap = new Map([["sushiSalmao", "np1"],
   ["hot", "np2"],
   ["temakiSalmao", "np3"],
@@ -40,7 +45,12 @@ let idMap = new Map([["sushiSalmao", "np1"],
   ["bruschetta", "gp2"],
   ["pizzaBianca", "gp3"],
   ["mille", "gp4"],
-  ["pici", "gp5"]]);
+  ["pici", "gp5"],
+  ["portu", "map1"],
+  ["frango", "map2"],
+  ["marge", "map3"],
+  ["mozza", "map4"],
+  ["pepe", "map5"]]);
 
 function addItemToCart(itemId, itemData) {
   cart.push(itemData);
@@ -150,6 +160,16 @@ function addCartCard() {
       productName = "Mille Foglie";
     } else if (itemData === "pici") {
       productName = "Pici All’Aglione";
+    } else if (itemData === "portu") {
+      productName = "Portuguesa";
+    } else if (itemData === "frango") {
+      productName = "Frango com Catupiri";
+    } else if (itemData === "marge") {
+      productName = "Marguerita";
+    } else if (itemData === "mozza") {
+      productName = "Mozzarella";
+    } else if (itemData === "pepe") {
+      productName = "Pepperoni";
     } else {
       productName = "ERROR: Unknown product"
     }
