@@ -1,5 +1,5 @@
 emailjs.init({
-    publicKey: "KEu1x-teiGVB_dZUD",
+  publicKey: "KEu1x-teiGVB_dZUD",
 });
 
 function sendEmail() {
