@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MiguelVP | Portfolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="dark-body">
+<nav class="navbar navbar-dark bg-dark fixed-top shadow-sm">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold" href="#home">MiguelVP</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="offcanvas offcanvas-end text-bg-dark" id="menu">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title">Menu</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="#about">About Me</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#request">Request</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<header id="home" class="hero-section d-flex align-items-center justify-content-center text-center text-light">
+  <div>
+    <h1 class="display-4 fw-bold">Miguel Villaverde Prieto</h1>
+    <p class="lead">Student • Developer • Problem Solver</p>
+    <a href="#projects" class="btn btn-outline-light mt-3">Explore My Work</a>
+  </div>
+</header>
+
+<main class="container text-light">
+
+  <section id="about" class="py-5">
+    <h2 class="text-center mb-4">About Me</h2>
+    <p class="text-center mx-auto" style="max-width: 800px;">
+      I'm Miguel, a passionate high school student deeply engaged in computer science, mathematics, and engineering. I love building impactful projects—whether it's AI models for finance, simulation systems, or physics-based applications. My mission is to create elegant and useful tools that solve real problems and help others.
+    </p>
+  </section>
+
+  <section id="projects" class="py-5">
+    <h2 class="text-center mb-4">Projects</h2>
+    <div class="row g-4 justify-content-center">
+      <div class="col-md-4">
+        <div class="card custom-card h-100">
+          <div class="card-body">
+            <h5 class="card-title">Computer Science</h5>
+            <p class="card-text">AI, simulations, tools, and more—my logic-driven side.</p>
+            <a href="projects.html?filter=cosc" class="btn btn-outline-light w-100">View Projects</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card custom-card h-100">
+          <div class="card-body">
+            <h5 class="card-title">Physics & Engineering</h5>
+            <p class="card-text">Prototypes, sensors, and real-world experimentation.</p>
+            <a href="projects.html?filter=physics" class="btn btn-outline-light w-100">Explore Builds</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="request" class="py-5">
+    <h2 class="text-center mb-4">Need Something Coded?</h2>
+    <p class="text-center mx-auto mb-4" style="max-width: 700px;">
+      Whether it's a personal idea, school tool, or startup concept—I love challenges. If you have an idea and need help turning it into code, I’m open to requests.
+    </p>
+    <div class="text-center">
+      <a href="requests.html" class="btn btn-outline-light">Request a Program</a>
+    </div>
+  </section>
+
+  <section id="contact" class="py-5">
+    <h2 class="text-center mb-4">Contact</h2>
+    <p class="text-center mb-4">Want to reach out? Contact me directly at:</p>
+    <div class="text-center">
+      <a href="mailto:miguelvp.dev@example.com" class="btn btn-light">miguelvp.dev@example.com</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="text-center py-4 text-light small">
+  © 2025 MiguelVP. Built with love & Bootstrap.
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
