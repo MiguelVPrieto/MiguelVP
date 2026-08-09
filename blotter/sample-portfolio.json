@@ -1,0 +1,120 @@
+{
+  "schema": "blotter.portfolio",
+  "version": 1,
+  "name": "Sample account",
+  "createdAt": 1786311858235,
+  "updatedAt": 1786311858240,
+  "startingCash": 100000,
+  "cash": 74858.7,
+  "realized": 0,
+  "settings": {
+    "commissionStock": 0,
+    "commissionOption": 0.65,
+    "riskFreeRate": 0.043
+  },
+  "stats": {
+    "high": 100000,
+    "highAt": 1786311858235,
+    "low": 100000,
+    "lowAt": 1786311858235
+  },
+  "positions": [
+    {
+      "id": "msmbyj3vl57nbh",
+      "symbol": "AAPL",
+      "side": "long",
+      "qty": 60,
+      "avgPrice": 225,
+      "openedAt": 1786311858235
+    },
+    {
+      "id": "msmbyj3vdreuta",
+      "symbol": "NVDA",
+      "side": "long",
+      "qty": 100,
+      "avgPrice": 170,
+      "openedAt": 1786311858235
+    },
+    {
+      "id": "msmbyj3v2mhbpp",
+      "symbol": "INTC",
+      "side": "short",
+      "qty": 300,
+      "avgPrice": 22,
+      "openedAt": 1786311858235
+    }
+  ],
+  "options": [
+    {
+      "id": "msmbyj3wufl6t1",
+      "symbol": "AAPL",
+      "right": "call",
+      "side": "long",
+      "contracts": 2,
+      "strike": 240,
+      "expiry": "2026-10-16",
+      "premium": 6.2,
+      "openedAt": 1786311858236
+    }
+  ],
+  "transactions": [
+    {
+      "type": "buy",
+      "asset": "stock",
+      "symbol": "AAPL",
+      "detail": "AAPL · buy",
+      "qty": 60,
+      "price": 225,
+      "amount": -13500,
+      "realized": 0,
+      "id": "msmbyj3vp01v3k",
+      "ts": 1786311858235,
+      "cashAfter": 86500
+    },
+    {
+      "type": "buy",
+      "asset": "stock",
+      "symbol": "NVDA",
+      "detail": "NVDA · buy",
+      "qty": 100,
+      "price": 170,
+      "amount": -17000,
+      "realized": 0,
+      "id": "msmbyj3vh4pcsb",
+      "ts": 1786311858235,
+      "cashAfter": 69500
+    },
+    {
+      "type": "short",
+      "asset": "stock",
+      "symbol": "INTC",
+      "detail": "INTC · sell short",
+      "qty": 300,
+      "price": 22,
+      "amount": 6600,
+      "realized": 0,
+      "id": "msmbyj3v207yna",
+      "ts": 1786311858235,
+      "cashAfter": 76100
+    },
+    {
+      "type": "bto",
+      "asset": "option",
+      "symbol": "AAPL",
+      "detail": "AAPL 16OCT26 240.00C · buy to open",
+      "qty": 2,
+      "price": 6.2,
+      "amount": -1241.3,
+      "realized": 0,
+      "id": "msmbyj40s3a3tx",
+      "ts": 1786311858240,
+      "cashAfter": 74858.7
+    }
+  ],
+  "equityCurve": [
+    {
+      "t": 1786311858235,
+      "v": 100000
+    }
+  ]
+}
