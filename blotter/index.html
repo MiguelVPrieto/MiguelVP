@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blotter — NASDAQ paper-trading simulator</title>
+<meta name="description" content="A local, static paper-trading simulator for NASDAQ stocks and options.">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- ══ OPENING GATE ═══════════════════════════════════════════════ -->
+<div class="gate" id="gate">
+  <div class="gate__sheet">
+    <header class="gate__head">
+      <p class="eyebrow">Paper trading · NASDAQ</p>
+      <h1 class="gate__title">Blotter</h1>
+      <p class="gate__sub">Every trade you place is written to a file you keep. Open the one you have, or start a fresh book.</p>
+    </header>
+
+    <div class="gate__cols">
+      <section class="gate__col" id="gateOpen">
+        <h2 class="gate__colTitle">Open an existing book</h2>
+        <label class="drop" id="drop" for="fileInput" tabindex="0">
+          <span class="drop__icon" aria-hidden="true">&#8681;</span>
+          <span class="drop__main">Drop your <b>.json</b> portfolio here</span>
+          <span class="drop__sub">or click to choose a file</span>
+          <input type="file" id="fileInput" accept=".json,.txt,application/json,text/plain" hidden>
+        </label>
+        <p class="gate__note" id="restoreNote" hidden></p>
+        <button class="btn btn--ghost" id="restoreLast" hidden>Reopen last session</button>
+      </section>
+
+      <div class="gate__rule" aria-hidden="true"><span>or</span></div>
+
+      <section class="gate__col" id="gateNew">
+        <h2 class="gate__colTitle">Start a new book</h2>
+        <div class="field">
+          <label class="field__label" for="newName">Account name</label>
+          <input class="field__input" type="text" id="newName" value="My paper account" maxlength="48">
+        </div>
+        <div class="field">
+          <label class="field__label" for="newCash">Opening cash (USD)</label>
+          <input class="field__input mono" type="number" id="newCash" value="100000" min="1000" step="1000">
+        </div>
+        <button class="btn btn--solid" id="createBtn">Create book</button>
+      </section>
+    </div>
+
+    <footer class="gate__foot">
+      <p>Prices come from a market-data API you supply a free key for. Everything else — cash, positions, history — stays in this browser and in your file.</p>
+    </footer>
+  </div>
+</div>
+
+<!-- ══ APP ════════════════════════════════════════════════════════ -->
+<div class="app" id="app" hidden>
+
+  <header class="masthead">
+    <div class="masthead__id">
+      <span class="masthead__mark">B</span>
+      <div>
+        <h1 class="masthead__title">Blotter</h1>
+        <p class="masthead__acct" id="acctName">—</p>
+      </div>
+    </div>
+
+    <div class="masthead__mid">
+      <button class="search-trigger" id="searchTrigger">
+        <span class="search-trigger__icon" aria-hidden="true">&#9906;</span>
+        <span>Search a ticker</span>
+        <kbd>/</kbd>
+      </button>
+    </div>
+
+    <div class="masthead__tools">
+      <span class="pill" id="marketPill" title="Market session">—</span>
+      <span class="pill pill--quiet" id="feedPill" title="Data feed">—</span>
+      <button class="btn btn--ghost btn--sm" id="refreshBtn" title="Refresh prices">Refresh</button>
+      <button class="btn btn--ghost btn--sm" id="settingsBtn">Settings</button>
+      <button class="btn btn--ghost btn--sm" id="saveBtn">Download book</button>
+      <button class="btn btn--ghost btn--sm" id="closeBookBtn" title="Close this book">Close</button>
+    </div>
+  </header>
+
+  <div class="banner" id="banner" hidden><span id="bannerText"></span><button class="banner__x" id="bannerClose" aria-label="Dismiss">&times;</button></div>
+
+  <!-- Dashboard -->
+  <section class="dash" aria-label="Account summary">
+    <article class="stat stat--wide">
+      <p class="stat__label">Portfolio value</p>
+      <p class="stat__value mono" id="statValue">—</p>
+      <p class="stat__delta mono" id="statDay">—</p>
+      <canvas class="stat__spark" id="equitySpark" height="40"></canvas>
+    </article>
+    <article class="stat">
+      <p class="stat__label">Cash</p>
+      <p class="stat__value mono" id="statCash">—</p>
+      <p class="stat__sub mono" id="statBuyingPower">—</p>
+    </article>
+    <article class="stat">
+      <p class="stat__label">Invested</p>
+      <p class="stat__value mono" id="statInvested">—</p>
+      <p class="stat__sub mono" id="statPositions">—</p>
+    </article>
+    <article class="stat">
+      <p class="stat__label">Highest value</p>
+      <p class="stat__value mono" id="statHigh">—</p>
+      <p class="stat__sub" id="statHighAt">—</p>
+    </article>
+    <article class="stat">
+      <p class="stat__label">Lowest value</p>
+      <p class="stat__value mono" id="statLow">—</p>
+      <p class="stat__sub" id="statLowAt">—</p>
+    </article>
+    <article class="stat">
+      <p class="stat__label">Total return</p>
+      <p class="stat__value mono" id="statPnl">—</p>
+      <p class="stat__sub mono" id="statPnlPct">—</p>
+    </article>
+  </section>
+
+  <main class="grid">
+    <!-- LEFT -->
+    <div class="col col--main">
+
+      <section class="panel panel--quote">
+        <div class="quote">
+          <div class="quote__id">
+            <h2 class="quote__sym mono" id="qSym">—</h2>
+            <p class="quote__name" id="qName">Search for a NASDAQ ticker to begin</p>
+          </div>
+          <div class="quote__px">
+            <p class="quote__last mono" id="qLast">—</p>
+            <p class="quote__chg mono" id="qChg">—</p>
+          </div>
+        </div>
+        <dl class="quote__meta">
+          <div><dt>Open</dt><dd class="mono" id="qOpen">—</dd></div>
+          <div><dt>Day high</dt><dd class="mono" id="qHigh">—</dd></div>
+          <div><dt>Day low</dt><dd class="mono" id="qLow">—</dd></div>
+          <div><dt>Prev close</dt><dd class="mono" id="qPrev">—</dd></div>
+          <div><dt>Volume</dt><dd class="mono" id="qVol">—</dd></div>
+          <div><dt>Hist. vol (ann.)</dt><dd class="mono" id="qIv">—</dd></div>
+        </dl>
+
+        <div class="chart">
+          <div class="chart__bar">
+            <div class="tabs" id="rangeTabs" role="tablist">
+              <button class="tab is-on" data-range="1D" role="tab">1D</button>
+              <button class="tab" data-range="5D" role="tab">5D</button>
+              <button class="tab" data-range="1M" role="tab">1M</button>
+              <button class="tab" data-range="6M" role="tab">6M</button>
+              <button class="tab" data-range="1Y" role="tab">1Y</button>
+            </div>
+            <p class="chart__readout mono" id="chartReadout"></p>
+          </div>
+          <div class="chart__canvasWrap">
+            <canvas id="priceChart" height="300"></canvas>
+            <p class="chart__empty" id="chartEmpty">No series loaded.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <header class="panel__head">
+          <h2 class="panel__title">Stock positions</h2>
+          <p class="panel__note mono" id="stockTotals"></p>
+        </header>
+        <div class="tableWrap">
+          <table class="blotter" id="stockTable">
+            <thead><tr>
+              <th>Symbol</th><th>Position</th><th class="num">Shares</th><th class="num">Avg cost</th>
+              <th class="num">Last</th><th class="num">Value</th><th class="num">Day change</th>
+              <th class="num">Open P/L</th><th></th>
+            </tr></thead>
+            <tbody id="stockRows"></tbody>
+          </table>
+          <p class="empty" id="stockEmpty">No stock positions. Search a ticker and write a ticket.</p>
+        </div>
+      </section>
+
+      <section class="panel">
+        <header class="panel__head">
+          <h2 class="panel__title">Option positions</h2>
+          <p class="panel__note mono" id="optTotals"></p>
+        </header>
+        <div class="tableWrap">
+          <table class="blotter" id="optTable">
+            <thead><tr>
+              <th>Contract</th><th>Position</th><th class="num">Qty</th><th class="num">Open premium</th>
+              <th class="num">Model price</th><th class="num">Value</th><th class="num">Day change</th>
+              <th class="num">Open P/L</th><th></th>
+            </tr></thead>
+            <tbody id="optRows"></tbody>
+          </table>
+          <p class="empty" id="optEmpty">No option positions.</p>
+        </div>
+      </section>
+
+      <section class="panel">
+        <header class="panel__head">
+          <h2 class="panel__title">Activity</h2>
+          <button class="btn btn--ghost btn--sm" id="exportCsvBtn">Export CSV</button>
+        </header>
+        <div class="tableWrap tableWrap--scroll">
+          <table class="blotter blotter--log">
+            <thead><tr><th>Time</th><th>Action</th><th>Detail</th><th class="num">Qty</th><th class="num">Price</th><th class="num">Cash effect</th></tr></thead>
+            <tbody id="logRows"></tbody>
+          </table>
+          <p class="empty" id="logEmpty">Nothing recorded yet.</p>
+        </div>
+      </section>
+    </div>
+
+    <!-- RIGHT: ORDER TICKET -->
+    <aside class="col col--ticket">
+      <form class="ticket" id="ticket" autocomplete="off">
+        <div class="ticket__head">
+          <p class="ticket__kicker">Order ticket</p>
+          <div class="segmented" id="assetSeg">
+            <button type="button" class="seg is-on" data-asset="stock">Stock</button>
+            <button type="button" class="seg" data-asset="option">Option</button>
+          </div>
+        </div>
+
+        <div class="ticket__body">
+          <div class="field">
+            <label class="field__label" for="tSymbol">Symbol</label>
+            <div class="field__row">
+              <input class="field__input mono field__input--sym" type="text" id="tSymbol" placeholder="AAPL" maxlength="10">
+              <button type="button" class="btn btn--ghost btn--sm" id="tLookup">Look up</button>
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field__label">Action</span>
+            <div class="actions" id="tActions"></div>
+          </div>
+
+          <!-- OPTION-ONLY -->
+          <div class="optOnly" id="optFields" hidden>
+            <div class="field field--split">
+              <div>
+                <label class="field__label" for="tRight">Type</label>
+                <select class="field__input" id="tRight"><option value="call">Call</option><option value="put">Put</option></select>
+              </div>
+              <div>
+                <label class="field__label" for="tExpiry">Expiry</label>
+                <select class="field__input mono" id="tExpiry"></select>
+              </div>
+            </div>
+            <div class="field">
+              <label class="field__label" for="tStrike">Strike</label>
+              <select class="field__input mono" id="tStrike"></select>
+            </div>
+            <dl class="greeks" id="greeks"></dl>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="tQty"><span id="qtyLabel">Shares</span></label>
+            <input class="field__input mono" type="number" id="tQty" value="10" min="1" step="1">
+            <div class="quickQty" id="quickQty"></div>
+          </div>
+        </div>
+
+        <div class="ticket__perf" aria-hidden="true"></div>
+
+        <div class="ticket__stub">
+          <dl class="stub">
+            <div><dt>Reference price</dt><dd class="mono" id="sPrice">—</dd></div>
+            <div><dt>Principal</dt><dd class="mono" id="sPrincipal">—</dd></div>
+            <div><dt>Commission</dt><dd class="mono" id="sComm">—</dd></div>
+            <div class="stub__total"><dt id="sNetLabel">Net cash effect</dt><dd class="mono" id="sNet">—</dd></div>
+            <div><dt>Buying power after</dt><dd class="mono" id="sBp">—</dd></div>
+          </dl>
+          <p class="stub__warn" id="tWarn" hidden></p>
+          <button class="btn btn--solid btn--block" type="submit" id="tSubmit" disabled>Place order</button>
+          <p class="stub__fine">Fills are simulated at the last traded price shown above. Option prices are model values, not live chain quotes.</p>
+        </div>
+      </form>
+    </aside>
+  </main>
+
+  <footer class="footer">
+    <p>Blotter is a simulator. Nothing here is an order, a quote, or investment advice.</p>
+    <p class="mono" id="lastTick">—</p>
+  </footer>
+</div>
+
+<!-- ══ SEARCH ═════════════════════════════════════════════════════ -->
+<div class="modal" id="searchModal" hidden>
+  <div class="modal__card modal__card--search" role="dialog" aria-label="Search tickers">
+    <div class="searchBox">
+      <input class="searchBox__input mono" type="text" id="searchInput" placeholder="Ticker or company name" autocomplete="off">
+      <button class="modal__x" id="searchClose" aria-label="Close">&times;</button>
+    </div>
+    <label class="check"><input type="checkbox" id="nasdaqOnly" checked> NASDAQ listings only</label>
+    <ul class="results" id="searchResults"></ul>
+    <p class="searchHint" id="searchHint">Type at least one character. Enter opens the first result.</p>
+  </div>
+</div>
+
+<!-- ══ SETTINGS ═══════════════════════════════════════════════════ -->
+<div class="modal" id="settingsModal" hidden>
+  <div class="modal__card" role="dialog" aria-label="Settings">
+    <header class="modal__head">
+      <h2 class="modal__title">Settings</h2>
+      <button class="modal__x" id="settingsClose" aria-label="Close">&times;</button>
+    </header>
+    <div class="modal__body">
+      <div class="field">
+        <label class="field__label" for="provider">Market data feed</label>
+        <select class="field__input" id="provider">
+          <option value="twelvedata">Twelve Data — quotes, charts, search (free key)</option>
+          <option value="finnhub">Finnhub — quotes and search (free key)</option>
+          <option value="demo">Demo — simulated prices, no key, not real data</option>
+        </select>
+        <p class="field__help" id="providerHelp"></p>
+      </div>
+      <div class="field">
+        <label class="field__label" for="apiKey">API key</label>
+        <input class="field__input mono" type="password" id="apiKey" placeholder="paste key">
+        <p class="field__help">Stored only in this browser. It is never written into your portfolio file.</p>
+      </div>
+      <div class="field field--split">
+        <div>
+          <label class="field__label" for="refreshSec">Auto-refresh (seconds)</label>
+          <input class="field__input mono" type="number" id="refreshSec" min="0" step="15" value="60">
+          <p class="field__help">0 turns auto-refresh off.</p>
+        </div>
+        <div>
+          <label class="field__label" for="rfr">Risk-free rate (%)</label>
+          <input class="field__input mono" type="number" id="rfr" min="0" max="20" step="0.1" value="4.3">
+          <p class="field__help">Used by the option model.</p>
+        </div>
+      </div>
+      <div class="field field--split">
+        <div>
+          <label class="field__label" for="commStock">Stock commission (per order)</label>
+          <input class="field__input mono" type="number" id="commStock" min="0" step="0.01" value="0">
+        </div>
+        <div>
+          <label class="field__label" for="commOpt">Option commission (per contract)</label>
+          <input class="field__input mono" type="number" id="commOpt" min="0" step="0.01" value="0.65">
+        </div>
+      </div>
+      <div class="field">
+        <button class="btn btn--ghost" id="testFeed">Test the feed</button>
+        <p class="field__help" id="testResult"></p>
+      </div>
+    </div>
+    <footer class="modal__foot">
+      <button class="btn btn--solid" id="settingsSave">Save settings</button>
+    </footer>
+  </div>
+</div>
+
+<div class="toasts" id="toasts"></div>
+
+<script src="js/util.js"></script>
+<script src="js/market.js"></script>
+<script src="js/options.js"></script>
+<script src="js/portfolio.js"></script>
+<script src="js/chart.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
